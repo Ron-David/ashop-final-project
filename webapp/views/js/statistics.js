@@ -21,7 +21,7 @@ $.ajax({
 $("#purchased").click(() => {
     $("#sideb").html('');
 
-    $("#sideb").html(getPurchasedHtml(products));
+    $("#sideb").html(getPurchasedHtml(products.sort((a, b) => Number(b.purchased) - Number(a.purchased))));
 
 
     const data = products
@@ -88,7 +88,8 @@ $("#purchased").click(() => {
 $("#visits").click(() => {
     $("#sideb").html('');
 
-    $("#sideb").html(getVisitsHtml(products));
+    // $("#sideb").html(getVisitsHtml(products));
+    $("#sideb").html(getVisitsHtml(products.sort((a, b) => Number(b.visits) - Number(a.visits))));
 
     const data = products
     let max = data.map(d => Number(d.visits)).sort(function (a, b) { return b - a })[0]
